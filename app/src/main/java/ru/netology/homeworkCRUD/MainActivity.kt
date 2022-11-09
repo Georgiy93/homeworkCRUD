@@ -129,7 +129,7 @@ class MainActivity : AppCompatActivity() {
                 AndroidUtils.hideKeyboard(this)
 
             }
-            group.visibility = View.GONE
+
         }
     }
 
