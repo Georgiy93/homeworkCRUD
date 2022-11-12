@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.constraintlayout.widget.Group
@@ -36,7 +37,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun initViews() {
         val group = findViewById<Group>(R.id.group)
-        group.visibility=View.GONE
+        group.visibility = View.GONE
         adapter = PostAdapter(object : OnInteractionListener {
             override fun onEdit(post: Post) {
 
@@ -88,9 +89,15 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupListeners() {
         val group = findViewById<Group>(R.id.group)
-        binding.content.setOnClickListener{
+        binding.content.setOnClickListener {
 
-            group.visibility=View.VISIBLE
+
+        }
+        binding.content.setOnFocusChangeListener { _, hasFocus ->
+            if (hasFocus)
+                group.visibility = View.VISIBLE
+            else
+                group.visibility = View.GONE
 
         }
         binding.save.setOnClickListener {
@@ -112,7 +119,7 @@ class MainActivity : AppCompatActivity() {
                 clearFocus()
                 AndroidUtils.hideKeyboard(this)
             }
-            group.visibility=View.GONE
+
         }
         binding.cancel.setOnClickListener {
             with(binding.content) {
@@ -122,7 +129,7 @@ class MainActivity : AppCompatActivity() {
                 AndroidUtils.hideKeyboard(this)
 
             }
-            group.visibility=View.GONE
+
         }
     }
 

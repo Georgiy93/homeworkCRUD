@@ -7,7 +7,7 @@ import ru.netology.homeworkCRUD.dto.Post
 
 interface PostRepository {
     fun get(): LiveData<List<Post>>
-    fun save(post:Post)
+    fun save(post: Post)
     fun likeById(id: Long)
     fun shareById(id: Long)
     fun viewById(id: Long)
